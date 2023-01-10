@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+    <p class="header">DUKU project</p>
+</head>
+<body>
+    <link rel="stylesheet" href="test2.css">
+    <div class="healthinfoWrap" style="margin-bottom:-9px;" >
+        <!-- 신체부위 검색 탭 -->
+        <form id="searchFrm" method="get" onsubmit="return fnSearch();">
+            <!-- onsubmit 속성은 <form> 태그 내부에서 <input type="submit">로 인해 발생하는 이벤트를 처리 -->
+            <div class="search">
+                <div class="bodySearch">
+                    <div class="tabs" id="bodyParent">
+                        <ul class="tabLists" id="bodyTest" role="tablist">
+                            <li class="on">
+                                <a href="#" id="tab-1" role="tab" aria-selected="true" aria-controls="panel-1">머리</a>
+                            </li>
+                            <li class="on">
+                                <a href="#" id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2">목</a>
+                            </li>
+                            <li class="on">
+                                <a href="#" id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3">가슴</a>
+                            </li>
+                            <li class="on">
+                                <a href="#" id="tab-4" role="tab" aria-selected="false" aria-controls="panel-4">배</a>
+                            </li>
+                        </ul>
+                    <div id="panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+                        <ul class="contBox clearfix">
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_1">간성뇌증</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_2" name="symptomIds" value="SS000265"  />
+                                <label for="cont1_2">강박증</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_3" name="symptomIds" value="SS000266"  />
+                                <label for="cont1_3">건망증</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="panel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2">
+                        <ul class="contBox clearfix">
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_1">목-1</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_2">목-2</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_3">목-3</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="panel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3">
+                        <ul class="contBox clearfix">
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_1">가슴-1</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_2" name="symptomIds" value="SS000265"  />
+                                <label for="cont1_2">가슴-2</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_3" name="symptomIds" value="SS000266"  />
+                                <label for="cont1_3">가슴-3</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="panel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4">
+                        <ul class="contBox clearfix">
+                            <li>
+                                <input type="checkbox" id="cont1_1" name="symptomIds" value="SS000264"  />
+                                <label for="cont1_1">배-1</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_2" name="symptomIds" value="SS000265"  />
+                                <label for="cont1_2">배-2</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cont1_3" name="symptomIds" value="SS000266"  />
+                                <label for="cont1_3">배-3</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="searchBtn">
+                    <a class="Button" href="#" onclick="";>
+                        <span>검색</span>
+                    </a>
+                </div>
+            </div>
+            <script>
+                window.addEventListener("DOMContentLoaded", () => {
+                    const tabs = document.querySelectorAll('[role="tab"]');
+                    const tabList = document.querySelector('[role="tablist"]');
+
+                    tabs.forEach((tab) => {
+                        tab.addEventListener("click", changeTabs);
+                    });
+                })
+                
+                function changeTabs(e) {
+                    const target = e.target;
+                    const parent = target.parentNode;
+                    const g_parent = parent.parentNode;
+                    const grandparent = g_parent.parentNode;
+
+                    parent
+                        .querySelectorAll('[aria-selected="true"]')
+                        .forEach((t) => t.setAttribute("aria-selected", false));
+
+                    target.setAttribute("aria-selected", true);
+
+                    grandparent
+                        .querySelectorAll('[role="tabpanel"]')
+                        .forEach((p) => p.setAttribute("hidden", true));
+
+                    grandparent.parentNode
+                        .querySelector(`#${target.getAttribute("aria-controls")}`)
+                        .removeAttribute("hidden");
+                }
+            </script>
+        </form>
+    </div>
+</div>
+</body>
+</html>

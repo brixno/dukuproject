@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.on {
+    list-style-type: none;
+    float: left;
+}
+
+.healthinfoWrap {
+    margin:auto;
+}
+
+.header {
+    font: 140px;
+    text-align:center;
+}
+
+.search { margin:0 auto; overflow:hidden; width:900px; height:270px; background-color: blue;}
+.search .bodySearch { width:100%; overflow:hidden;}
+.search .bodySearch .tabs { width:900px; height:221px; background:#ddd;}
+.search .bodySearch .tabs > ul.tabLists { overflow:hidden; border-left:1px solid #ddd;}
+.search .bodySearch .tabs > ul.tabLists > li { float:left; padding-top:12px; width:99px; height:28px; border-right:1px solid #ddd; background:#fff; text-align:center; line-height:1; font-weight:bold; }
